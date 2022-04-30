@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32407.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E0BA4558-5C0A-4B5D-9EEE-D392199B9D75}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\.gitattributes = Solution Items\.gitattributes
+		Solution Items\.gitignore = Solution Items\.gitignore
+		Solution Items\codes.json = Solution Items\codes.json
+		Solution Items\README.md = Solution Items\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DDBEE153-73F6-44C0-B720-326D56D4D1BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{22FA4DD1-1A58-43B0-A1CB-E079D8449E2E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.Api", "src\GoalSystem.Inventory.Api\GoalSystem.Inventory.Api.csproj", "{425B6D8E-533D-4958-9C61-1668B85343F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.Application", "src\GoalSystem.Inventory.Application\GoalSystem.Inventory.Application.csproj", "{BF6DC4EE-EEEA-4545-A9F7-C2ADB6C77DBA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.Domain", "src\GoalSystem.Inventory.Domain\GoalSystem.Inventory.Domain.csproj", "{83B44781-6E26-432B-A82D-C9B87173DA05}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.Infrastructure", "src\GoalSystem.Inventory.Infrastructure\GoalSystem.Inventory.Infrastructure.csproj", "{7D3AA341-8667-4474-8B4B-42C3CE9693F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.UnitTests", "src\GoalSystem.Inventory.UnitTests\GoalSystem.Inventory.UnitTests.csproj", "{C9BCF89E-50E0-4997-A122-D939F8F60F53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.IntegrationTests", "src\GoalSystem.Inventory.IntegrationTests\GoalSystem.Inventory.IntegrationTests.csproj", "{8C000F9A-201B-4A0C-8948-A72782692D01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{425B6D8E-533D-4958-9C61-1668B85343F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425B6D8E-533D-4958-9C61-1668B85343F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425B6D8E-533D-4958-9C61-1668B85343F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425B6D8E-533D-4958-9C61-1668B85343F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF6DC4EE-EEEA-4545-A9F7-C2ADB6C77DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6DC4EE-EEEA-4545-A9F7-C2ADB6C77DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6DC4EE-EEEA-4545-A9F7-C2ADB6C77DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6DC4EE-EEEA-4545-A9F7-C2ADB6C77DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B44781-6E26-432B-A82D-C9B87173DA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B44781-6E26-432B-A82D-C9B87173DA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B44781-6E26-432B-A82D-C9B87173DA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B44781-6E26-432B-A82D-C9B87173DA05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D3AA341-8667-4474-8B4B-42C3CE9693F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D3AA341-8667-4474-8B4B-42C3CE9693F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D3AA341-8667-4474-8B4B-42C3CE9693F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D3AA341-8667-4474-8B4B-42C3CE9693F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9BCF89E-50E0-4997-A122-D939F8F60F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9BCF89E-50E0-4997-A122-D939F8F60F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9BCF89E-50E0-4997-A122-D939F8F60F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9BCF89E-50E0-4997-A122-D939F8F60F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C000F9A-201B-4A0C-8948-A72782692D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C000F9A-201B-4A0C-8948-A72782692D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C000F9A-201B-4A0C-8948-A72782692D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C000F9A-201B-4A0C-8948-A72782692D01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{425B6D8E-533D-4958-9C61-1668B85343F4} = {DDBEE153-73F6-44C0-B720-326D56D4D1BA}
+		{BF6DC4EE-EEEA-4545-A9F7-C2ADB6C77DBA} = {DDBEE153-73F6-44C0-B720-326D56D4D1BA}
+		{83B44781-6E26-432B-A82D-C9B87173DA05} = {DDBEE153-73F6-44C0-B720-326D56D4D1BA}
+		{7D3AA341-8667-4474-8B4B-42C3CE9693F7} = {DDBEE153-73F6-44C0-B720-326D56D4D1BA}
+		{C9BCF89E-50E0-4997-A122-D939F8F60F53} = {22FA4DD1-1A58-43B0-A1CB-E079D8449E2E}
+		{8C000F9A-201B-4A0C-8948-A72782692D01} = {22FA4DD1-1A58-43B0-A1CB-E079D8449E2E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABDBA984-62F8-4AB8-85CF-CE07EDC3B0B9}
+	EndGlobalSection
+EndGlobal
