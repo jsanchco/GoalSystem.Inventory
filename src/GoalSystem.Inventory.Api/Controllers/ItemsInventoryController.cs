@@ -17,16 +17,16 @@ namespace GoalSystem.Inventory.Api.Controllers
     {
         private readonly ILogger<ItemsInventoryController> _logger;
         private readonly IMapper _mapper;
-        private readonly IItemInventoryService _feedsService;
+        private readonly IItemInventoryService _itemInventoryService;
 
         public ItemsInventoryController(
             ILogger<ItemsInventoryController> logger,
             IMapper mapper,
-            IItemInventoryService feedsService)
+            IItemInventoryService itemInventoryService)
         {
             _logger = logger;
             _mapper = mapper;
-            _feedsService = feedsService;
+            _itemInventoryService = itemInventoryService;
         }
 
         [HttpGet]
@@ -36,8 +36,8 @@ namespace GoalSystem.Inventory.Api.Controllers
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpGet] ...");
 
-            var feeds = await _feedsService.GetAll();
-            var result = _mapper.Map<List<ItemInventoryDto>>(feeds);
+            var itemsInventory = await _itemInventoryService.GetAll();
+            var result = _mapper.Map<List<ItemInventoryDto>>(itemsInventory);
 
             return Ok(result);
         }
@@ -49,11 +49,11 @@ namespace GoalSystem.Inventory.Api.Controllers
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpGet] GetByName ...");
 
-            var feed = await _feedsService.GetByName(name);
-            if (feed == null)
+            var itemInventory = await _itemInventoryService.GetByName(name);
+            if (itemInventory == null)
                 return NotFound();
 
-            var result = _mapper.Map<ItemInventoryDto>(feed);
+            var result = _mapper.Map<ItemInventoryDto>(itemInventory);
 
             return Ok(result);
         }
@@ -65,7 +65,7 @@ namespace GoalSystem.Inventory.Api.Controllers
             _logger.LogInformation($"In ItemsInventoryController -> [HttpPos] Add ...");
 
             var newItemInventory = _mapper.Map<ItemInventory>(itemInventoryDto);
-            var itemInventory = await _feedsService.Add(newItemInventory);
+            var itemInventory = await _itemInventoryService.Add(newItemInventory);
             var result = _mapper.Map<ItemInventoryDto>(itemInventory);
 
             return Ok(result);

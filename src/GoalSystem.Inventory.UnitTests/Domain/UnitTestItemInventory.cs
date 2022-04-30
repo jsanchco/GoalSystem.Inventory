@@ -11,7 +11,7 @@ namespace Codere.MX.FeedCorner.UnitTests.Domain
     public class UnitTestRepositoryFeedsFromJson
     {
         [TestMethod, TestCategory("ItemInventory")]
-        public void Create_Feed_OK()
+        public void Create_ItemInventory_OK()
         {
             var name = "ItemInventory1";
             var type = TypeItemInventory.Type1;
@@ -25,7 +25,7 @@ namespace Codere.MX.FeedCorner.UnitTests.Domain
         }
 
         [TestMethod, TestCategory("ItemInventory")]
-        public void Create_Feed_KO_code_NotNullOrEmpty()
+        public void Create_ItemInventory_KO_code_NotNullOrEmpty()
         {
             var name = "";
             var type = TypeItemInventory.Type1;
@@ -37,8 +37,7 @@ namespace Codere.MX.FeedCorner.UnitTests.Domain
         }
 
         [TestMethod, TestCategory("ItemInventory")]
-        //[ExpectedException(typeof(BusinessException), "The argument 'stadium' must be in 'Sultanes, Mariachis, Diablos or Rayados'")]
-        public void Create_Feed_KO_stadium_InEnum()
+        public void Create_ItemInventory_KO_TypeItemInventory_InEnum()
         {
             var name = "ItemInventory1";
             var type = 5;
