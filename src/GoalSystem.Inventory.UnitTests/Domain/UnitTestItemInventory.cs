@@ -19,7 +19,7 @@ namespace Codere.MX.FeedCorner.UnitTests.Domain
 
             var itemInventory = new ItemInventory(name, expirationDate, (int)type);
             Assert.AreEqual(itemInventory.Name, name);
-            Assert.AreEqual(itemInventory.Type, type);
+            Assert.AreEqual(itemInventory.Type, (int)type);
             Assert.AreEqual(itemInventory.ExprirationDate, expirationDate);
             Console.WriteLine($"Created ItemInventory: {JsonConvert.SerializeObject(itemInventory, Formatting.Indented)}");
         }

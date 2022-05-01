@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace GoalSystem.Inventory.Application.Repository
 {
-    public interface IRepositoryItemInventory : IRepositoryRead<ItemInventory>, IRepositoryAdd<ItemInventory>
+    public interface IRepositoryItemInventory : IRepositoryRead<ItemInventory>, IRepositoryAdd<ItemInventory>, IRepositoryDelete<ItemInventory>
     {
         Task<int> Count { get; }
     }

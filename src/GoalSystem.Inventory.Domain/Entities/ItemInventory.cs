@@ -16,7 +16,7 @@ namespace GoalSystem.Inventory.Domain.Entities
         public ItemInventory(string name, DateTime expirationDate, int type)
         {
             Ensure.Arguments.NotNullOrEmpty(name, nameof(name));
-            Ensure.Arguments.InEnum<TypeItemInventory>(name, nameof(type));
+            Ensure.Arguments.InEnum<TypeItemInventory>(type, nameof(TypeItemInventory));
 
             Name = name;
             ExprirationDate = expirationDate;

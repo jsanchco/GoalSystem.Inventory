@@ -50,5 +50,20 @@ namespace GoalSystem.Inventory.Infrastructure.Repository
         }
 
         #endregion
+
+        #region Delete
+
+        public async Task Delete(string code)
+        {
+            var itemToRemove = _itemsInventory.FirstOrDefault(x => x.Name == code);
+            if (itemToRemove == null)
+                throw new BusinessException($"Not exists one item with the name: {code}");
+
+            _itemsInventory.Remove(itemToRemove);
+
+            await Task.FromResult(0);
+        }
+
+        #endregion
     }
 }

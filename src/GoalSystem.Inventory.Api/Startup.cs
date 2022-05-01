@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using GoalSystem.Inventory.Api.Configuration;
 using GoalSystem.Inventory.Api.Extensions;
 using GoalSystem.Inventory.Api.Middlewares;
@@ -24,7 +25,11 @@ namespace GoalSystem.Inventory.Api
         {
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(s =>
+                {
+                    s.RegisterValidatorsFromAssemblyContaining<Startup>();
+                });
 
             services.AddServices();
 

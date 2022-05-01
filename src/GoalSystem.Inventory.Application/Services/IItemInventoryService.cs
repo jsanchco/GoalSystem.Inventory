@@ -9,5 +9,6 @@ namespace GoalSystem.Inventory.Application.Services
         Task<List<ItemInventory>> GetAll();
         Task<ItemInventory> GetByName(string filter);
         Task<ItemInventory> Add(ItemInventory itemInventory);
+        Task Remove(string code);
     }
 }

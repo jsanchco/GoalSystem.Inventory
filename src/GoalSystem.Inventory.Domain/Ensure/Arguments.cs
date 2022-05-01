@@ -25,6 +25,12 @@ namespace GoalSystem.Inventory.Domain.Ensure
                 throw new BusinessException($"The value '{value}' is not in '{parameterName}'");
         }
 
+        public static void InEnum<T>(int value, string parameterName = "")
+        {
+            if (!Enum.GetValues(typeof(T)).Cast<int>().Any(x => x == value))
+                throw new BusinessException($"The value '{value}' is not in '{parameterName}'");
+        }
+
         public static void IsLessThanZero(int value, string parameterName = "")
         {
             if (value < 0)

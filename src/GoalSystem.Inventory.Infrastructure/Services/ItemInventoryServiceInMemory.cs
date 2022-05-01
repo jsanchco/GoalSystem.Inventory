@@ -33,5 +33,10 @@ namespace GoalSystem.Inventory.Infrastructure.Services
 
             return await Task.FromResult(result);
         }
+
+        public async Task Remove(string code)
+        {
+            await Task.FromResult(_repositoryItemInventoryInMemory.Delete(code));
+        }
     }
 }

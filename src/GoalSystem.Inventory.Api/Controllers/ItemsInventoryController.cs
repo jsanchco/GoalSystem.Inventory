@@ -60,7 +60,7 @@ namespace GoalSystem.Inventory.Api.Controllers
 
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ItemInventoryDto))]
-        public async Task<IActionResult> Add(ItemInventoryDto itemInventoryDto)
+        public async Task<IActionResult> Add([FromBody] ItemInventoryDto itemInventoryDto)
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpPos] Add ...");
 
