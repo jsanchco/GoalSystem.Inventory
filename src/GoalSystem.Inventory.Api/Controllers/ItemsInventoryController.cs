@@ -70,5 +70,16 @@ namespace GoalSystem.Inventory.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpDelete]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ItemInventoryDto))]
+        public async Task<IActionResult> Remove(string code)
+        {
+            _logger.LogInformation($"In ItemsInventoryController -> [HttpDelete] Remove ...");
+
+            await _itemInventoryService.Remove(code);
+
+            return Ok();
+        }
     }
 }

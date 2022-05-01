@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
-namespace Codere.MX.FeedCorner.UnitTests.Infrastructure
+namespace GoalSystem.Inventory.UnitTests.Infrastructure
 {
     [TestClass]
     public class UnitTestRepositoryItemInventoryInMemory
@@ -105,7 +105,33 @@ namespace Codere.MX.FeedCorner.UnitTests.Infrastructure
         }
 
         [TestMethod, TestCategory("RepositoryItemInventoryInMemory")]
-        public async Task Get_OK()
+        public async Task Remove_OK()
+        {
+            var repositoryItemInventoryInMemory = new RepositoryItemInventoryInMemory();
+            var code = "Item1";
+            var newItemInventory = new ItemInventory(
+                code,
+                DateTime.UtcNow.AddMinutes(1),
+                (int)TypeItemInventory.Type1);
+            await repositoryItemInventoryInMemory.Add(newItemInventory);
+            var newItemInventory1 = new ItemInventory(
+                "Item2",
+                DateTime.UtcNow.AddMinutes(1),
+                (int)TypeItemInventory.Type1);
+            await repositoryItemInventoryInMemory.Add(newItemInventory1);
+
+            Assert.AreEqual(await repositoryItemInventoryInMemory.Count, 2);
+            Console.WriteLine($"Add two items to Repository ItemInventory [{repositoryItemInventoryInMemory.Count}] items");
+
+            await repositoryItemInventoryInMemory.Delete(code);
+            var itemInventory = await repositoryItemInventoryInMemory.GetById(code);
+            Assert.IsNull(itemInventory);
+
+            Console.WriteLine($"Remove element[{code}] of ItemInventory Repositroy");
+        }
+
+        [TestMethod, TestCategory("RepositoryItemInventoryInMemory")]
+        public async Task Remove_KO_when_the_code_of_item_not_exists()
         {
             var repositoryItemInventoryInMemory = new RepositoryItemInventoryInMemory();
             var newItemInventory = new ItemInventory(
@@ -113,14 +139,16 @@ namespace Codere.MX.FeedCorner.UnitTests.Infrastructure
                 DateTime.UtcNow.AddMinutes(1),
                 (int)TypeItemInventory.Type1);
             await repositoryItemInventoryInMemory.Add(newItemInventory);
+            var newItemInventory1 = new ItemInventory(
+                "Item2",
+                DateTime.UtcNow.AddMinutes(1),
+                (int)TypeItemInventory.Type1);
 
-            Assert.AreEqual(await repositoryItemInventoryInMemory.Count, 1);
-            Console.WriteLine($"Add one item to Repository ItemInventory [{repositoryItemInventoryInMemory.Count}] items");
-
-            var result = await repositoryItemInventoryInMemory.GetAll();
-            Assert.AreEqual(await repositoryItemInventoryInMemory.Count, result.Count);
-            Assert.AreEqual(result[0].Name, newItemInventory.Name);
-            Console.WriteLine($"The first element of ItemInventory Repositroy is [{JsonConvert.SerializeObject(newItemInventory, Formatting.Indented)}]");
+            var code = "fake";
+            await repositoryItemInventoryInMemory.Add(newItemInventory1);
+            var ex = Assert.ThrowsExceptionAsync<BusinessException>(async () => await repositoryItemInventoryInMemory.Delete(code));
+            Assert.AreEqual(ex.Result.Message, $"Not exists one item with the name: {code}", ex.Result.Message);
+            Console.WriteLine($"Throw exception controlled: {ex.Result.Message}");
         }
     }
 }

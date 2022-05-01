@@ -8,26 +8,30 @@ namespace GoalSystem.Inventory.Infrastructure.Services
 {
     public class ItemInventoryServiceInMemory : IItemInventoryService
     {
-        private readonly IRepositoryItemInventory _repositoryItemInventoryInMemory;
+        private readonly IRepositoryItemInventory _repositoryItemInventory;
+        private readonly ISendEmailService _sendEmailService;
 
-        public ItemInventoryServiceInMemory(IRepositoryItemInventory repositoryItemInventoryInMemory)
+        public ItemInventoryServiceInMemory(
+            IRepositoryItemInventory repositoryItemInventoryInMemory,
+            ISendEmailService sendEmailService)
         {
-            _repositoryItemInventoryInMemory = repositoryItemInventoryInMemory;
+            _repositoryItemInventory = repositoryItemInventoryInMemory;
+            _sendEmailService = sendEmailService;
         }
 
         public async Task<List<ItemInventory>> GetAll()
         {
-            return await _repositoryItemInventoryInMemory.GetAll();
+            return await _repositoryItemInventory.GetAll();
         }
 
         public async Task<ItemInventory> GetByName(string filter)
         {
-            return await _repositoryItemInventoryInMemory.GetById(filter);
+            return await _repositoryItemInventory.GetById(filter);
         }
 
         public async Task<ItemInventory> Add(ItemInventory itemInventory)
         {
-            await _repositoryItemInventoryInMemory.Add(itemInventory);
+            await _repositoryItemInventory.Add(itemInventory);
 
             var result = await GetByName(itemInventory.Name);
 
@@ -36,7 +40,10 @@ namespace GoalSystem.Inventory.Infrastructure.Services
 
         public async Task Remove(string code)
         {
-            await Task.FromResult(_repositoryItemInventoryInMemory.Delete(code));
+            await Task.FromResult(_repositoryItemInventory.Delete(code));
+
+
+            await Task.FromResult(_sendEmailService.Send());
         }
     }
 }

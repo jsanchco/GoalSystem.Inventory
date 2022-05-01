@@ -12,6 +12,7 @@ namespace GoalSystem.Inventory.Api.Configuration
         {
             services.AddSingleton<IRepositoryItemInventory, RepositoryItemInventoryInMemory>();
             services.AddTransient<IItemInventoryService, ItemInventoryServiceInMemory>();
+            services.AddTransient<ISendEmailService, SendEmailFakeService>();
 
             return services;
         }

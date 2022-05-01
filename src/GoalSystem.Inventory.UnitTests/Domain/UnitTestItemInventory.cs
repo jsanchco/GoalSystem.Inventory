@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System;
 
-namespace Codere.MX.FeedCorner.UnitTests.Domain
+namespace GoalSystem.Inventory.UnitTests.Domain
 {
     [TestClass]
     public class UnitTestRepositoryFeedsFromJson
