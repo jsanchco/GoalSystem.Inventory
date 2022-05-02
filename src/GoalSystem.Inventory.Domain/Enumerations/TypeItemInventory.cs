@@ -1,5 +1,8 @@
 ﻿namespace GoalSystem.Inventory.Domain.Enumerations
 {
+    /// <summary>
+    /// Enum of type of Item Inventory
+    /// </summary>
     public enum TypeItemInventory
     {
         Type1 = 1,

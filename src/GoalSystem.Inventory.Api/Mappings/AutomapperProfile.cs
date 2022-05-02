@@ -4,8 +4,14 @@ using GoalSystem.Inventory.Domain.Entities;
 
 namespace GoalSystem.Inventory.Api.Mappings
 {
+    /// <summary>
+    /// Class handler all mapping in DTO's and reverse with Automapper
+    /// </summary>
     public class AutomapperProfile : Profile
     {
+        /// <summary>
+        /// Add of possibles mappings
+        /// </summary>
         public AutomapperProfile()
         {
             CreateMap<ItemInventory, ItemInventoryDto>();

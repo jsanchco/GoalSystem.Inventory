@@ -7,8 +7,16 @@ using System.Collections.Generic;
 
 namespace GoalSystem.Inventory.Api.Extensions
 {
+    /// <summary>
+    /// Class to handler the swagger
+    /// </summary>
     public static class SwaggerExtensions
     {
+        /// <summary>
+        /// Add all related in order to show the ApiKey
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
         public static void AddSwaggerWithApiKeySecurity(
             this IServiceCollection services, 
             IConfiguration configuration)

@@ -1,22 +1,31 @@
 ﻿using GoalSystem.Inventory.Application.Repository;
 using GoalSystem.Inventory.Application.Services;
 using GoalSystem.Inventory.Domain.Entities;
+using GoalSystem.Inventory.Domain.Enumerations;
+using GoalSystem.Inventory.Domain.Models;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GoalSystem.Inventory.Infrastructure.Services
 {
+    /// <summary>
+    /// Class that implments the interface IItemInventoryService
+    /// </summary>
     public class ItemInventoryServiceInMemory : IItemInventoryService
     {
+        private readonly ILogger<ItemInventoryServiceInMemory> _logger;
         private readonly IRepositoryItemInventory _repositoryItemInventory;
-        private readonly ISendEmailService _sendEmailService;
-
+        private readonly IEventsService _eventsService;
+        
         public ItemInventoryServiceInMemory(
+            ILogger<ItemInventoryServiceInMemory> logger,
             IRepositoryItemInventory repositoryItemInventoryInMemory,
-            ISendEmailService sendEmailService)
+            IEventsService eventsService)
         {
+            _logger = logger;
             _repositoryItemInventory = repositoryItemInventoryInMemory;
-            _sendEmailService = sendEmailService;
+            _eventsService = eventsService;
         }
 
         public async Task<List<ItemInventory>> GetAll()
@@ -38,12 +47,12 @@ namespace GoalSystem.Inventory.Infrastructure.Services
             return await Task.FromResult(result);
         }
 
-        public async Task Remove(string code)
+        public async Task<bool> Remove(string code)
         {
-            await Task.FromResult(_repositoryItemInventory.Delete(code));
+            await _repositoryItemInventory.Delete(code);
+            _logger.LogInformation($"Publish Event when the Remove ItemInventory[{code}]");
 
-
-            await Task.FromResult(_sendEmailService.Send());
+            return await Task.FromResult(await _eventsService.Publish(new Event(TypeEvent.RemoveItemInventory)));
         }
     }
 }

@@ -4,8 +4,14 @@ using System;
 
 namespace GoalSystem.Inventory.Api.Validators
 {
+    /// <summary>
+    /// Class that handler the validation of Item of Inventory with FluenValidation
+    /// </summary>
     public class ItemInventoryValidator : AbstractValidator<ItemInventoryDto>
     {
+        /// <summary>
+        /// Rules to handler one new Item of Inventory
+        /// </summary>
         public ItemInventoryValidator()
         {
             RuleFor(m => m.Name)

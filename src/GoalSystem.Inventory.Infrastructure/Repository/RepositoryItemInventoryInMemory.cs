@@ -1,5 +1,4 @@
 ﻿using GoalSystem.Inventory.Application.Repository;
-using GoalSystem.Inventory.Domain.Ensure;
 using GoalSystem.Inventory.Domain.Entities;
 using GoalSystem.Inventory.Domain.Exceptions;
 using System.Collections.Generic;
@@ -8,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GoalSystem.Inventory.Infrastructure.Repository
 {
+    /// <summary>
+    /// Class that implements the interface IRepositoryItemInventory (this class store the Items in memory) 
+    /// </summary>
     public class RepositoryItemInventoryInMemory : IRepositoryItemInventory
     {
         private List<ItemInventory> _itemsInventory;
@@ -23,16 +25,17 @@ namespace GoalSystem.Inventory.Infrastructure.Repository
 
         public async Task<List<ItemInventory>> GetAll()
         {
-            Arguments.IsNotNullOrEmpty(_itemsInventory, nameof(_itemsInventory));
-
             return await Task.FromResult(_itemsInventory);
         }
 
         public async Task<ItemInventory> GetById(string filter)
         {
-            Arguments.IsNotNullOrEmpty(_itemsInventory, nameof(_itemsInventory));
-
             return await Task.FromResult(_itemsInventory.FirstOrDefault(x => x.Name == filter));
+        }
+
+        public async Task<List<ItemInventory>> GetExpired()
+        {
+            return await Task.FromResult(_itemsInventory.Where(x => x.HasExpired).ToList());
         }
 
         #endregion
@@ -53,7 +56,7 @@ namespace GoalSystem.Inventory.Infrastructure.Repository
 
         #region Delete
 
-        public async Task Delete(string code)
+        public async Task<bool> Delete(string code)
         {
             var itemToRemove = _itemsInventory.FirstOrDefault(x => x.Name == code);
             if (itemToRemove == null)
@@ -61,7 +64,7 @@ namespace GoalSystem.Inventory.Infrastructure.Repository
 
             _itemsInventory.Remove(itemToRemove);
 
-            await Task.FromResult(0);
+            return await Task.FromResult(true);
         }
 
         #endregion

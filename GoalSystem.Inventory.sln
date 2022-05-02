@@ -25,8 +25,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.Infras
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.UnitTests", "src\GoalSystem.Inventory.UnitTests\GoalSystem.Inventory.UnitTests.csproj", "{C9BCF89E-50E0-4997-A122-D939F8F60F53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSystem.Inventory.IntegrationTests", "src\GoalSystem.Inventory.IntegrationTests\GoalSystem.Inventory.IntegrationTests.csproj", "{8C000F9A-201B-4A0C-8948-A72782692D01}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{C9BCF89E-50E0-4997-A122-D939F8F60F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9BCF89E-50E0-4997-A122-D939F8F60F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9BCF89E-50E0-4997-A122-D939F8F60F53}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C000F9A-201B-4A0C-8948-A72782692D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C000F9A-201B-4A0C-8948-A72782692D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C000F9A-201B-4A0C-8948-A72782692D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C000F9A-201B-4A0C-8948-A72782692D01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,7 +61,6 @@ Global
 		{83B44781-6E26-432B-A82D-C9B87173DA05} = {DDBEE153-73F6-44C0-B720-326D56D4D1BA}
 		{7D3AA341-8667-4474-8B4B-42C3CE9693F7} = {DDBEE153-73F6-44C0-B720-326D56D4D1BA}
 		{C9BCF89E-50E0-4997-A122-D939F8F60F53} = {22FA4DD1-1A58-43B0-A1CB-E079D8449E2E}
-		{8C000F9A-201B-4A0C-8948-A72782692D01} = {22FA4DD1-1A58-43B0-A1CB-E079D8449E2E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ABDBA984-62F8-4AB8-85CF-CE07EDC3B0B9}

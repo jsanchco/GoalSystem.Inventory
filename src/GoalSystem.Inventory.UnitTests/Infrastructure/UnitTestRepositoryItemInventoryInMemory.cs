@@ -68,15 +68,6 @@ namespace GoalSystem.Inventory.UnitTests.Infrastructure
         }
 
         [TestMethod, TestCategory("RepositoryItemInventoryInMemory")]
-        public async Task Get_KO_because_the_repository_is_empty()
-        {
-            var repositoryItemInventoryInMemory = new RepositoryItemInventoryInMemory();
-            var ex = Assert.ThrowsExceptionAsync<BusinessException>(async () => await repositoryItemInventoryInMemory.GetAll());
-            Assert.AreEqual(ex.Result.Message, $"The argument '_itemsInventory' must not be empty", ex.Result.Message);
-            Console.WriteLine($"Throw exception controlled: {ex.Result.Message}");
-        }
-
-        [TestMethod, TestCategory("RepositoryItemInventoryInMemory")]
         public async Task GetById_OK()
         {
             var repositoryItemInventoryInMemory = new RepositoryItemInventoryInMemory();
@@ -93,15 +84,6 @@ namespace GoalSystem.Inventory.UnitTests.Infrastructure
             var result = await repositoryItemInventoryInMemory.GetById(code);
             Assert.AreEqual(result.Name, code);
             Console.WriteLine($"The element[{code}] of ItemInventory Repositroy is [{JsonConvert.SerializeObject(newItemInventory, Formatting.Indented)}]");
-        }
-
-        [TestMethod, TestCategory("RepositoryItemInventoryInMemory")]
-        public async Task GetById_KO_because_the_repository_is_empty()
-        {
-            var repositoryItemInventoryInMemory = new RepositoryItemInventoryInMemory();
-            var ex = Assert.ThrowsExceptionAsync<BusinessException>(async () => await repositoryItemInventoryInMemory.GetById("fake"));
-            Assert.AreEqual(ex.Result.Message, $"The argument '_itemsInventory' must not be empty", ex.Result.Message);
-            Console.WriteLine($"Throw exception controlled: {ex.Result.Message}");
         }
 
         [TestMethod, TestCategory("RepositoryItemInventoryInMemory")]

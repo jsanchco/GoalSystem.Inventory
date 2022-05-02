@@ -8,7 +8,7 @@ using System;
 namespace GoalSystem.Inventory.UnitTests.Domain
 {
     [TestClass]
-    public class UnitTestRepositoryFeedsFromJson
+    public class UnitTestItemInventory
     {
         [TestMethod, TestCategory("ItemInventory")]
         public void Create_ItemInventory_OK()

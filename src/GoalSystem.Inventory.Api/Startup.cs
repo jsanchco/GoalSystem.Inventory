@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using GoalSystem.Inventory.Api.Configuration;
 using GoalSystem.Inventory.Api.Extensions;
+using GoalSystem.Inventory.Api.HostedServices;
 using GoalSystem.Inventory.Api.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,8 @@ namespace GoalSystem.Inventory.Api
                 });
 
             services.AddServices();
+
+            services.AddHostedService<CheckItemsExpiredHostedService>();
 
             services.AddSwaggerWithApiKeySecurity(Configuration);
 

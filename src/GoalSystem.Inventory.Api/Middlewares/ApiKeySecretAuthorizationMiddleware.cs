@@ -7,12 +7,21 @@ using System.Threading.Tasks;
 
 namespace GoalSystem.Inventory.Api.Middlewares
 {
+    /// <summary>
+    /// Middleware to handler the ApiKey in the headers
+    /// </summary>
     public class ApiKeySecretAuthorizationMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ApiKeySecretAuthorizationMiddleware> _logger;
         private readonly ApiKeySettings _apiKeySettings;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="next"></param>
+        /// <param name="logger"></param>
+        /// <param name="configuration">Configuration of ApiKey (name and secret)</param>
         public ApiKeySecretAuthorizationMiddleware(
             RequestDelegate next,
             ILogger<ApiKeySecretAuthorizationMiddleware> logger,
@@ -25,6 +34,11 @@ namespace GoalSystem.Inventory.Api.Middlewares
             configuration.GetSection("ApiKey").Bind(_apiKeySettings);
         }
 
+        /// <summary>
+        /// Check if in the header is the ApiKey
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task InvokeAsync(HttpContext context)
         {
             if (!context.Request.Headers.TryGetValue(

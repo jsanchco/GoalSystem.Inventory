@@ -3,6 +3,9 @@ using System;
 
 namespace GoalSystem.Inventory.Api.DTOs
 {
+    /// <summary>
+    /// DTO of Item
+    /// </summary>
     public class ItemInventoryDto
     {
         [JsonProperty("name")]

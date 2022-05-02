@@ -1,20 +1,22 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This project have a mission of handler all related with Items in one Inventory.
+It was in charged for me from Goal System
+I have protected this API with one Basic authorization (ApiKey). In the appsettings we can see this configuration
 
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
 1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+	Set as startup project: GoalSystem.Inventory.Api, snd run app with VisualStudio and IIS express
+2.	Nuget's dependencies
+	- Serilog in order to handler all logs of tha Application. This los will be stores in one file (inventoryapi_logYYYYMMdd)
+	  placed in the folder c://Logs. We can configure this in appsettings.json
+	- Automapper in order to handler all mapping from Entities to DTO's and reverse
+	- FluentValidation to handle all the validation rules of the DTOs that come from the request
+	- Swagger in order to handler the UI of the API for the Application   
 
 # Build and Test
-TODO: Describe and show how to build your code and run the tests. 
-
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Compile the App and run Test (from explorer of Tests, run all) 
+If we want launch the application API with swagger we can add the ApiKey Secret in the UI of swagger.
+This secret key we can get from the appsettings, and we change. Acually the secret key is: "5988a7f0-b8b6-4226-989d-84145c46cadb"
+and the name og ApiKey is: "Goal.System". If we want test this API from others places we must add in the headers
+of request this information. In other way, the Application API will respond with code 401 -> "Unauthorized"

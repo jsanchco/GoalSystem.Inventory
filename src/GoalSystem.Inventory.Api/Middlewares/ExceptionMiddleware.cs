@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GoalSystem.Inventory.Api.Middlewares
 {
+    /// <summary>
+    /// Class the handler globally all excepions that happened in the App
+    /// </summary>
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
