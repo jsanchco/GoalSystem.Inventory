@@ -57,14 +57,15 @@ namespace GoalSystem.Inventory.Api
                 s.RoutePrefix = string.Empty;
             });
 
-            app.UseMiddleware<ExceptionMiddleware>();
-            app.UseMiddleware<ApiKeySecretAuthorizationMiddleware>(Configuration);
-
             app.UseRouting();
 
-            app.UseCors();
+            // Here CORS
+            // Here CORS
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<ApiKeySecretAuthorizationMiddleware>(Configuration);
 
             app.UseEndpoints(endpoints =>
             {
