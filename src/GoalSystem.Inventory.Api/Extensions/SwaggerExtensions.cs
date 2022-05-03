@@ -34,7 +34,15 @@ namespace GoalSystem.Inventory.Api.Extensions
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Goal System Inventory API",
-                    Description = "Inventory API"
+                    Description = @"Inventory REST API &nbsp;  
+# Authentication
+
+| Header name | Header value |
+| -                        | -                                                    |
+| Name       | The name you have Goal.System system |
+| ApiSecret  | The key(password) that Goal.System will provide you |
+
+Just for testing purposes you can test the API methods without providing the security headers from this page."
                 });
                 c.AddSecurityDefinition(securityDefinition, new OpenApiSecurityScheme
                 {

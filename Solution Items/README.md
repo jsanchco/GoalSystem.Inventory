@@ -1,7 +1,7 @@
 # Introduction 
 This project have a mission of handler all related with Items in one Inventory.
 It was in charged for me from Goal System
-I have protected this API with one Basic authorization (ApiKey). In the appsettings we can see this configuration
+I have protected this API with one Basic authorization (ApiKey) [5988a7f0-b8b6-4226-989d-84145c46cadb]. In the appsettings we can see this configuration
 
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
