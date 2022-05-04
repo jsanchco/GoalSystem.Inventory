@@ -117,9 +117,9 @@ namespace GoalSystem.Inventory.Api.Controllers
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpDelete] Remove ...");
 
-            await _itemInventoryService.Remove(code);
+            var result = await _itemInventoryService.Remove(code);
 
-            return Ok();
+            return Ok(result);
         }
     }
 }
