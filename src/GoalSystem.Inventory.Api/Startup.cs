@@ -3,12 +3,14 @@ using GoalSystem.Inventory.Api.Configuration;
 using GoalSystem.Inventory.Api.Extensions;
 using GoalSystem.Inventory.Api.HostedServices;
 using GoalSystem.Inventory.Api.Middlewares;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Reflection;
 
 namespace GoalSystem.Inventory.Api
 {
@@ -33,6 +35,8 @@ namespace GoalSystem.Inventory.Api
                 });
 
             services.AddServices();
+
+            services.AddCustomMediatR();
 
             services.AddHostedService<CheckItemsExpiredHostedService>();
 

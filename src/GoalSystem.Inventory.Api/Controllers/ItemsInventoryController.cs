@@ -2,6 +2,9 @@
 using GoalSystem.Inventory.Api.DTOs;
 using GoalSystem.Inventory.Application.Services;
 using GoalSystem.Inventory.Domain.Entities;
+using GoalSystem.Inventory.Infrastructure.CQRS.ItemInventory.Commands;
+using GoalSystem.Inventory.Infrastructure.CQRS.ItemInventory.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -29,6 +32,11 @@ namespace GoalSystem.Inventory.Api.Controllers
         private readonly IMapper _mapper;
 
         /// <summary>
+        /// Use patron CQRS object
+        /// </summary>
+        private readonly IMediator _mediator;
+
+        /// <summary>
         /// Service to handler the Items of Inventory
         /// </summary>
         private readonly IItemInventoryService _itemInventoryService;
@@ -43,10 +51,12 @@ namespace GoalSystem.Inventory.Api.Controllers
         public ItemsInventoryController(
             ILogger<ItemsInventoryController> logger,
             IMapper mapper,
+            IMediator mediator,
             IItemInventoryService itemInventoryService)
         {
             _logger = logger;
             _mapper = mapper;
+            _mediator = mediator;
             _itemInventoryService = itemInventoryService;
         }
 
@@ -61,7 +71,7 @@ namespace GoalSystem.Inventory.Api.Controllers
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpGet] ...");
 
-            var itemsInventory = await _itemInventoryService.GetAll();
+            var itemsInventory = await _mediator.Send(new GetAllItemsInventoryQuery());
             var result = _mapper.Map<List<ItemInventoryDto>>(itemsInventory);
 
             return Ok(result);
@@ -79,7 +89,7 @@ namespace GoalSystem.Inventory.Api.Controllers
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpGet] GetByName ...");
 
-            var itemInventory = await _itemInventoryService.GetByName(name);
+            var itemInventory = await _mediator.Send(new GetByNameItemInventoryQuery { Name = name });
             if (itemInventory == null)
                 return NotFound();
 
@@ -99,15 +109,19 @@ namespace GoalSystem.Inventory.Api.Controllers
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpPos] Add ...");
 
-            var newItemInventory = _mapper.Map<ItemInventory>(itemInventoryDto);
-            var itemInventory = await _itemInventoryService.Add(newItemInventory);
+            var itemInventory = await _mediator.Send(new CreateItemInventoryCommand
+            {
+                Name = itemInventoryDto.Name,
+                ExprirationDate = itemInventoryDto.ExprirationDate,
+                Type = itemInventoryDto.Type
+            });
             var result = _mapper.Map<ItemInventoryDto>(itemInventory);
 
             return Ok(result);
         }
 
         /// <summary>
-        /// Remove one item of Repsoitory
+        /// Remove one item of Repository
         /// </summary>
         /// <param name="code">code of item to remove</param>
         /// <returns>If operation is Ok return true, else false</returns>
@@ -117,9 +131,9 @@ namespace GoalSystem.Inventory.Api.Controllers
         {
             _logger.LogInformation($"In ItemsInventoryController -> [HttpDelete] Remove ...");
 
-            await _itemInventoryService.Remove(code);
+            var result = await _mediator.Send(new RemoveItemInventoryCommand { Name = code });
 
-            return Ok();
+            return Ok(result);
         }
     }
 }
