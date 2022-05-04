@@ -13,6 +13,7 @@ TODO: Guide users through getting your code up and running on their own system. 
 	- Automapper in order to handler all mapping from Entities to DTO's and reverse
 	- FluentValidation to handle all the validation rules of the DTOs that come from the request
 	- Swagger in order to handler the UI of the API for the Application   
+	- Add MediatR for use the pattern CQRS
 
 # Build and Test
 Compile the App and run Test (from explorer of Tests, run all) 
