@@ -49,9 +49,11 @@ namespace GoalSystem.Inventory.Infrastructure.Services
 
         public async Task<bool> Remove(string code)
         {
-            await _repositoryItemInventory.Delete(code);
-            _logger.LogInformation($"Publish Event when the Remove ItemInventory[{code}]");
+            var result = await _repositoryItemInventory.Delete(code);
+            if (!result)
+                return false;
 
+            _logger.LogInformation($"Publish event when the Remove ItemInventory[{code}]");
             return await Task.FromResult(await _eventsService.Publish(new Event(TypeEvent.RemoveItemInventory)));
         }
     }
